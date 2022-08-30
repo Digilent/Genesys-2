@@ -16,7 +16,7 @@ For more information on the Genesys 2, including other demos that may be availab
 Requirements
 ------------
 * **Genesys 2**: To purchase a Genesys 2, see the [Digilent Store](https://digilent.com/shop/genesys-2-kintex-7-fpga-development-board/).
-* **Vivado 2019.1 Installation**: To set up Vivado, see the [Installing Vivado and Digilent Board Files Tutorial](https://reference.digilentinc.com/vivado/installing-vivado/start).
+* **Vivado 2022.1 Installation**: To set up Vivado, see the [Installing Vivado and Digilent Board Files Tutorial](https://reference.digilentinc.com/vivado/installing-vivado/start).
 * **Serial Terminal Emulator Application**: For more information see the [Installing and Using a Terminal Emulator Tutorial](https://reference.digilentinc.com/learn/programmable-logic/tutorials/tera-term).
 * **USB Keyboard**
 * **MicroUSB Cables**
