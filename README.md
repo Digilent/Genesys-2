@@ -1,23 +1,59 @@
-# Genesys 2 Root Repository
+Genesys 2 DMA Audio Demo
+==========================
 
-This repository contains all demos for the Genesys 2.
+Description
+-----------
+This repository contains the DMA Audio Demo for the Genesys 2. This demo records a 5 second sample from microphone(J12) or line in (J13) and plays it back on headphone out (J10) or line out (J11). Recording and playback are started by push buttons. 
 
-For more information about the Genesys 2, visit its [Resource Center](https://digilent.com/reference/programmable-logic/genesys-2/start) on the Digilent Wiki.
+For more information on the Genesys 2 DMA Audio Demo, including setup instructions, visit its [Demo Page](https://digilent.com/reference/programmable-logic/genesys-2/demos/dma-audio) on the Digilent Wiki.
 
-Each demo contained in this repository is documented on the Digilent Wiki, links in the table below.
+For more information on the Genesys 2, including other demos that may be available, see its [Resource Center](https://digilent.com/reference/programmable-logic/genesys-2/start) on the Digilent Wiki.
 
-| Wiki Link | Demo Master Branch | Submodules Used |
-|-----------|--------------------|-----------------|
-| [Genesys 2 DMA Audio Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/dma-audio) | DMA-Audio/master  | HW, SW |
-| [Genesys 2 HDMI Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/hdmi) | HDMI/master  | HW, SW |
-| [Genesys 2 Keyboard Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/keyboard) | Keyboard/master  | HW |
-| [Genesys 2 OLED Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/oled) | OLED/master  | HW |
+Requirements
+------------
+* **Genesys 2**: To purchase a Genesys 2, see the [Digilent Store](https://digilent.com/shop/genesys-2-kintex-7-fpga-development-board/).
+* **Vivado 2019.1 Installation with Xilinx Vitis**: To set up Vivado, see the [Installing Vivado and Digilent Board Files Tutorial](https://reference.digilentinc.com/vivado/installing-vivado/start).
+* **Serial Terminal Emulator Application**: For more information see the [Installing and Using a Terminal Emulator Tutorial](https://reference.digilentinc.com/learn/programmable-logic/tutorials/tera-term).
+* **MicroUSB Cables**
+* **Headphones or Speakers**
+* **Audio Input Device**
+* **Genesys 2 Power Supply**
 
+Git Navigation Information
+--------------------------
+For instructions on how to use this repository with git, and for additional documentation on the submodule and branch structures used, please visit [Digilent FPGA Demo Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/documents/git) on the Digilent Wiki. Note that use of git is not required to use this demo. Digilent recommends the use of project releases, for which instructions can be found in each demo wiki page, linked above.
 
-## Repository Description
+To see other demos in this repository, see the master branch's [README](https://github.com/Digilent/Genesys-2).
 
-This repository is designed to offer a unified and comprehensive approach to all of the aspects of the demos that we provide for the Genesys 2, across multiple tools. By cloning this repo recursively you will receive the repositories for Vivado projects (HW), Vitis workspaces (SW), and Petalinux projects (OS). Each submodule may have its own submodule dependencies which will also be pulled when cloning. An important aspect of this structure is the fact that the SW and OS heavily depend on hardware hand-off files from the HW repository.
+Some demos do not require some submodules, in these cases, they are still provided to ease switching between demos in git. When unused, the submodule folder is largely empty, except for a readme containing only the heading "Root commit". This demo contains the following submodules:
 
-This repository also provides releases containing project and image files used by the various tools involved. Releases provide files that are directly usable, without requiring the use git or any scripting systems. Documentation of each demo, as well as instructions for using their releases, can be found by visiting the corresponding pages on the Digilent Wiki, links below. All releases in this repository can be found in this repository's [releases page](https://github.com/Digilent/Genesys-2/releases), however, use of the wiki pages to find specific well-tested releases is advised.
+| Submodule | Used by this demo |
+|-----------|-------------------|
+| HW        | Yes      |
+| OS        | No       |
+| SW        | Yes      |
 
-For instructions on how to use this repository with git, and for additional documentation on the submodule and branch structures used, please visit [Digilent FPGA Demo Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/documents/git) on the Digilent Wiki. Note that use of git is not required to use this demo.
+Demo Setup
+----------
+In order to view or change the demo, the corresponding repositories must be cloned and rebuilt.
+
+1. Repositories for DMA Audio Demo can be found on Github, see the [Vivado project](https://github.com/Digilent/Genesys-2-HW/tree/DMA-Audio/next) and the [SDK Project](https://github.com/Digilent/Genesys-2-SW/tree/DMA-Audio/next).
+2. Connect the power supply.
+3. Connect a computer to the USB/JTAG and USB/UART port via MicroUSB cables.
+4. Flip the POWER switch to the ON position.
+5. Connect a serial terminal to the serial port associated with the board with a baud rate of 9600.
+6. Launch Hardware from Xilinx SDK.
+
+Next Steps
+----------
+This demo can be used as a basis for other projects by modifying the hardware platform in the Vivado project's block design or by making changes to the test scripts.
+Check out the Genesys 2's [Resource Center](https://reference.digilentinc.com/programmable-logic/genesys-2/start) to find more documentation, demos, and tutorials.
+For technical support or questions, please post on the [Digilent Forum](forum.digilentinc.com).
+
+Known Issues
+------------
+* None.
+
+Additional Notes
+----------------
+For more information on how this project is version controlled, refer to the digilent-vivado-scripts submodule's [readme](https://github.com/digilent/digilent-vivado-scripts).
