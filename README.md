@@ -1,23 +1,51 @@
-# Genesys 2 Root Repository
+# Zybo Z7-20 HDMI Demo
 
-This repository contains all demos for the Genesys 2.
+## Description
 
-For more information about the Genesys 2, visit its [Resource Center](https://digilent.com/reference/programmable-logic/genesys-2/start) on the Digilent Wiki.
+This branch contains sources for the Genesys 2 HDMI Demo.
 
-Each demo contained in this repository is documented on the Digilent Wiki, links in the table below.
+This project demonstrates how to use the HDMI Sink and HDMI Source with a MicroBlaze processor. Vivado is used to build the demo's hardware platform, and Vitis is used to program the bitstream onto the board and to build and deploy a C application. Video data streams in through the HDMI in port and out through the HDMI out port. A UART interface is available to configure what is output through HDMI. The configuring options are shown in the table below.
 
-| Wiki Link | Demo Master Branch | Submodules Used |
-|-----------|--------------------|-----------------|
-| [Genesys 2 DMA Audio Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/dma-audio) | DMA-Audio/master  | HW, SW |
-| [Genesys 2 HDMI Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/hdmi) | HDMI/master  | HW, SW |
-| [Genesys 2 Keyboard Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/keyboard) | Keyboard/master  | HW |
-| [Genesys 2 OLED Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/oled) | OLED/master  | HW |
+Since the demo uses the USB-UART bridge to configure the HDMI Display, the Genesys 2 must be connected to a computer over MicroUSB, which must be running a serial terminal. For more information on how to set up and use a serial terminal, such as Tera Term or PuTTY, refer to [this tutorial](https://reference.digilentinc.com/learn/programmable-logic/tutorials/tera-term).
 
+| Option    | Function                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 1         | Change the resolution of the HDMI output to the monitor.                                                                 |
+| 2         | Changes the frame buffer to display on the HDMI monitor.                                                                 |
+| 3/4       | Store one of two test patterns in the chosen video frame buffer.                                                         |
+| 5         | Start/Stop streaming video data from HDMI to the chosen video frame buffer.                                              |
+| 6         | Change the video frame buffer that HDMI data is streamed into.                                                           |
+| 7         | Invert and store the current video frame into the next video frame buffer and display it.                                |
+| 8         | Scale the current video frame to the display resolution, store it into the next video frame buffer, and then display it. |
 
-## Repository Description
+For more information on the Genesys 2 HDMI Demo, including setup instructions, visit its [Demo Page](https://digilent.com/reference/programmable-logic/genesys-2/demos/hdmi) on the Digilent Wiki.
 
-This repository is designed to offer a unified and comprehensive approach to all of the aspects of the demos that we provide for the Genesys 2, across multiple tools. By cloning this repo recursively you will receive the repositories for Vivado projects (HW), Vitis workspaces (SW), and Petalinux projects (OS). Each submodule may have its own submodule dependencies which will also be pulled when cloning. An important aspect of this structure is the fact that the SW and OS heavily depend on hardware hand-off files from the HW repository.
+For more information on the Genesys 2, including other demos that may be available, see its [Resource Center](https://digilent.com/reference/programmable-logic/genesys-2/start) on the Digilent Wiki.
 
-This repository also provides releases containing project and image files used by the various tools involved. Releases provide files that are directly usable, without requiring the use git or any scripting systems. Documentation of each demo, as well as instructions for using their releases, can be found by visiting the corresponding pages on the Digilent Wiki, links below. All releases in this repository can be found in this repository's [releases page](https://github.com/Digilent/Genesys-2/releases), however, use of the wiki pages to find specific well-tested releases is advised.
+### Git Navigation Information
 
-For instructions on how to use this repository with git, and for additional documentation on the submodule and branch structures used, please visit [Digilent FPGA Demo Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/documents/git) on the Digilent Wiki. Note that use of git is not required to use this demo.
+For instructions on how to use this repository with git, and for additional documentation on the submodule and branch structures used, please visit [Digilent FPGA Demo Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/documents/git) on the Digilent Wiki. Note that use of git is not required to use this demo. Digilent recommends the use of project releases, for which instructions can be found in each demo wiki page, linked above.
+
+To see other demos in this repository, see the master branch's [README](https://github.com/Digilent/Genesys-2).
+
+Some demos do not require some submodules, in these cases, they are still provided to ease switching between demos in git. When unused, the submodule folder is largely empty, except for a readme containing only the heading "Root commit". This demo contains the following submodules:
+
+| Submodule | Used by this demo |
+|-----------|-------------------|
+| HW        | Yes               |
+| OS        | No                |
+| SW        | Yes               |
+
+This demo was moved into this repository during 2022.1 updates. Its history prior to these updates can be found in its old repository, linked below:
+* https://github.com/Digilent/Genesys-2-HDMI
+
+### Requirements
+
+The following are required for use of this demo. For more information on how to get any hardware or software you may be missing, see the Demo Page, linked above.
+
+* **Genesys 2 with external 12V power supply**
+* **Vivado and Vitis 2022.1 Installations**
+* **Serial Terminal Emulator Application**
+* **2 MicroUSB Cables**
+* **2 HDMI Cables**
+* **HDMI capable Monitor/TV**
