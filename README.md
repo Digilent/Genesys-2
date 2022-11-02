@@ -1,4 +1,4 @@
-# Zybo Z7-20 HDMI Demo
+# Genesys 2 HDMI Demo
 
 ## Description
 
