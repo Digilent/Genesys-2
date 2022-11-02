@@ -1,23 +1,42 @@
 # Genesys 2 Root Repository
 
-This repository contains all demos for the Genesys 2.
+## Genesys 2 FMC-Pcam-Adapter Demo
 
-For more information about the Genesys 2, visit its [Resource Center](https://digilent.com/reference/programmable-logic/genesys-2/start) on the Digilent Wiki.
+### Description
 
-Each demo contained in this repository is documented on the Digilent Wiki, links in the table below.
+This branch contains sources for the Genesys 2 FMC-Pcam-Adapter Demo.
 
-| Wiki Link | Demo Master Branch | Submodules Used |
-|-----------|--------------------|-----------------|
-| [Genesys 2 DMA Audio Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/dma-audio) | DMA-Audio/master  | HW, SW |
-| [Genesys 2 HDMI Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/hdmi) | HDMI/master  | HW, SW |
-| [Genesys 2 Keyboard Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/keyboard) | Keyboard/master  | HW |
-| [Genesys 2 OLED Demo](https://digilent.com/reference/programmable-logic/genesys-2/demos/oled) | OLED/master  | HW |
+This project demonstrates the usage of the FMC Pcam Adapter as an interface from one to four different Pcam cameras and the Genesys 2 platform. The Video Stream from each different camera is getting in through the MIPI/FMC connectors and out through the carrier VGA port. For errors and feed-back messages, an UART interface is present.	
 
+For more information on the Genesys 2 FMC-Pcam-Adapter Demo, including setup instructions, visit its [Demo Page](https://digilent.com/reference/programmable-logic/genesys-2/demos/genesys-2_fmc-pcam-adapter_demo) on the Digilent Wiki.
 
-## Repository Description
+For more information on the Genesys 2, including other demos that may be available, see its [Resource Center](https://digilent.com/reference/programmable-logic/genesys-2/start) on the Digilent Wiki.
 
-This repository is designed to offer a unified and comprehensive approach to all of the aspects of the demos that we provide for the Genesys 2, across multiple tools. By cloning this repo recursively you will receive the repositories for Vivado projects (HW), Vitis workspaces (SW), and Petalinux projects (OS). Each submodule may have its own submodule dependencies which will also be pulled when cloning. An important aspect of this structure is the fact that the SW and OS heavily depend on hardware hand-off files from the HW repository.
+#### Implementation details
 
-This repository also provides releases containing project and image files used by the various tools involved. Releases provide files that are directly usable, without requiring the use git or any scripting systems. Documentation of each demo, as well as instructions for using their releases, can be found by visiting the corresponding pages on the Digilent Wiki, links below. All releases in this repository can be found in this repository's [releases page](https://github.com/Digilent/Genesys-2/releases), however, use of the wiki pages to find specific well-tested releases is advised.
+During the 2022.1 upgrade, significant changes were made to the VDMA synchronization mechanism, which is needed to make sure the write operations (camera frames being stored to DDR) and read operations (VGA/HDMI output reading frames from DDR) don't overlap, resulting in unwanted frame tearing. More details can be found on the demo's wiki page and in both Vivado and Vitis projects' comments.
 
-For instructions on how to use this repository with git, and for additional documentation on the submodule and branch structures used, please visit [Digilent FPGA Demo Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/documents/git) on the Digilent Wiki. Note that use of git is not required to use this demo.
+### Git Navigation Information
+
+For instructions on how to use this repository with git, and for additional documentation on the submodule and branch structures used, please visit [Digilent FPGA Demo Git Repositories](https://reference.digilentinc.com/reference/programmable-logic/documents/git) on the Digilent Wiki. Note that use of git is not required to use this demo. Digilent recommends the use of project releases, for which instructions can be found in each demo wiki page, linked above.
+
+To see other demos in this repository, see the master branch's [README](https://github.com/Digilent/Genesys-2).
+
+Some demos do not require some submodules, in these cases, they are still provided to ease switching between demos in git. When unused, the submodule folder is largely empty, except for a readme containing only the heading "Root commit". This demo contains the following submodules:
+
+| Submodule | Used by this demo |
+|-----------|-------------------|
+| HW        | Yes      |
+| OS        | No       |
+| SW        | Yes      |
+
+### Requirements
+
+The following are required for use of this demo. For more information on how to get any hardware or software you may be missing, see the Demo Page, linked above.
+
+* Genesys 2 with an external 12V Power Supply
+* 2 Micro-USB cables. One for programming and the other one for the UART interface.
+* 1 VGA cable and/or HDMI cable
+* FMC-Pcam-Adapter board
+* From 1 to 4 Pcam-5C cameras
+* VGA and/or HDMI monitor
